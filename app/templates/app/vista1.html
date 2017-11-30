@@ -1,0 +1,19 @@
+{% extends "app/base.html" %}
+{% block content %}
+<h2>Vista1</h2>
+
+<form method='GET' action=''>
+<input type ='text' name='q' placeholder='Buscar'/>
+<input type='submit' value='Search'/>
+</form>
+
+{% for obj in object_list %}
+{% url "detalle" abc=obj.id %}
+<a href='{{ obj.get_absolut_url }}'>{{ obj.Nombre }}</a> <br>
+{{ obj.contenido }} <br>
+{{ obj.update }} <br>
+{{ obj.id }} <br>
+<img src='{{ obj.Foto.url }}' class='img-responive' height="480" width="480"/>
+<hr>
+{% endfor %}
+{% endblock %}

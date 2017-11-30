@@ -1,0 +1,93 @@
+{% extends "app/base.html" %}
+{% block content %}
+{% load static %}
+<h2> Perfil </h2>
+
+<!--<p>User Name: {{ user }} </p>
+<p>Edad: {{ user }} </p>
+<p>Telefono: {{ user }} </p>
+<p>E-mail: {{ user }} </p>
+<img src="{{ user.usuarios.Foto.url }}">-->
+
+
+Usuario: {{ user.username }}
+<hr>
+Correo Electronico:  {{ user.usuarios.Email }}
+<hr>
+Telefono: {{ user.usuarios.Telefono }}
+<hr>
+Nombre: {{ user.usurios.Nombre }}
+<hr>
+<p><img src="{{ user.usuarios.Foto.url }}" width="500" height="500"></p>
+
+
+
+{% for obj in object_list %}
+{% if obj.Foto %}
+        <!--<div class="row" style="float:left; background-color:#FFFFFF" >
+          <div class="col-xs-11" >
+            <div class="thumbnail col-xs-12;" >
+              <img src="{{ obj.Foto.url }}" alt="" class="img-responsive" style= "height:300px; width:300px">
+              <div class="caption; background-color:#FFAF0A"></div>
+              <h3 style="text-align: left">Nombre: {{ obj.Nombre | title }}</h3>
+              <h6 style="text-align: left">Edad: {{ obj.Edad | title }}</h6>
+	 	<h6 style="text-align: left">Raza: {{ obj.Raza | title }}</h6>
+              <p style="text-align: left">Descripción: {{ obj.Descripcion | capfirst }}</p>
+              <p style="text-align: left;font-size: 12px;padding-left: 5pt">Fecha de publicación: {{ obj.marcadetiempo }}
+                <p style="text-align: left;font-size: 12px;padding-left: 5pt">Autor: {{ obj.Autor }}
+              </p>
+              <a href='http://localhost:8000/post_detail/{{obj.id}}'>Comentar!</a>
+
+              <p ></p>
+            </div>
+          </div>
+        </div>-->
+
+                              <div class="panel panel-default">
+                                <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Bootstrap Examples</h4></div>
+                                <div class="panel-thumbnail"><img src="/assets/example/bg_5.jpg" class="img-responsive"></div>
+                                <div class="panel-body">
+                                  <p class="lead">Urbanization</p>
+                                  <p><img src="{{ obj.Foto.url }}" alt="" class="img-responsive" style= "height:300px; width:300px">
+              <div class="caption; background-color:#FFAF0A"></div>
+              <h3 style="text-align: left">Nombre: {{ obj.Nombre | title }}</h3>
+              <h6 style="text-align: left">Edad: {{ obj.Edad | title }}</h6>
+	 	<h6 style="text-align: left">Raza: {{ obj.Raza | title }}</h6>
+              <p style="text-align: left">Descripción: {{ obj.Descripcion | capfirst }}</p>
+              <p style="text-align: left;font-size: 12px;padding-left: 5pt">Fecha de publicación: {{ obj.marcadetiempo }}
+                <p style="text-align: left;font-size: 12px;padding-left: 5pt">Autor: {{ obj.Autor }}
+              </p>
+              <a href='http://localhost:8000/post_detail/{{obj.id}}'>Comentar!</a></p>
+                                  
+                                  <p>
+                                  </p>
+                                </div>
+                              </div>
+    {% else %}
+                              <div class="panel panel-default">
+                                <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Bootstrap Examples</h4></div>
+                                <div class="panel-thumbnail"><img src="/assets/example/bg_5.jpg" class="img-responsive"></div>
+                                <div class="panel-body">
+                                  <p class="lead">Urbanization</p>
+                                  <p><img src="{% static 'app/img/sinimagen.jpg' %}"  alt="" class="img-responsive" style= "height:300px; width:300px">
+              <div class="caption; background-color:#FFAF0A"></div>
+              <h3 style="text-align: left">Nombre: {{ obj.Nombre | title }}</h3>
+              <h6 style="text-align: left">Edad: {{ obj.Edad | title }}</h6>
+	 	<h6 style="text-align: left">Raza: {{ obj.Raza | title }}</h6>
+              <p style="text-align: left">Descripción: {{ obj.Descripcion | capfirst }}</p>
+              <p style="text-align: left;font-size: 12px;padding-left: 5pt">Fecha de publicación: {{ obj.marcadetiempo }}
+                <p style="text-align: left;font-size: 12px;padding-left: 5pt">Autor: {{ obj.Autor }}
+              </p>
+              <a href='http://localhost:8000/post_detail/{{obj.id}}'>Comentar!</a></p>
+                                  
+                                  <p>
+                                  </p>
+                                </div>
+                              </div>
+    {% endif %}
+{% endfor %}
+
+
+
+
+ {% endblock %}

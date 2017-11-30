@@ -1,0 +1,51 @@
+{% extends "app/base.html" %}
+{% block content %}
+{% load static %}
+<h2> Comentarios de post </h2>
+
+{% if messages %}
+<ul class = "messages">
+  {% for message in messages %}
+  <li{% if messafe.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+
+
+<center>
+
+{{ instance.Nombre }} <br>
+{{ instance.contenido }} <br>
+{{ instance.update }} <br>
+{{ instance.id }} <br>
+<img src='{{ instance.Foto.url }}' class='img-responive' height=250 width=350>
+<p class='lead'>Comments</p>
+<form method="POST" action","> 
+  {% csrf_token %}
+  {{ comment_form }}
+<br>
+  <input type='submit' value='Post comment' class='btn btn-default'>
+</form>
+
+</center>
+
+
+<br><br>
+{% for comment in comments %}
+                              <div class="panel panel-default">
+                                <div class="panel-heading"><p><img src="{% static 'app/img/speech.png' %}" width="28px" height="28px" class="img-responsive">Comentario de {{ comment.user.username }}</p></div>
+                                <div class="panel-body" width="100px" ;overflow-y: scroll;">
+                                  <p>  <p class=''>
+					<br>
+	 				{{ comment.content }}
+    					<br>
+    					<hr/></p>
+                                  
+                                  <p>
+                                    <img src="{% static 'app/img/user.jpg' %}" width="28px" height="28px"> Publicado el {{ comment.timestamp }}
+                                  </p>
+                                </div>
+                              </div>
+{% endfor %}
+ {% endblock %}

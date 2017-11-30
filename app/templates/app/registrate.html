@@ -1,0 +1,11 @@
+{% extends "app/base.html" %}
+{% block content %}
+
+<h1>Bienvenido</h1>
+<form method='Post' action='' enctype="multipart/form-data">{% csrf_token %}
+    {%csrf_token%}
+    {{form.as_p}}
+	<input type="submit" value="Register">
+	<input type="reset" value"Cancel">
+  </form>
+{% endblock %}

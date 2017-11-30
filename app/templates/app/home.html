@@ -1,0 +1,243 @@
+{% extends "app/base.html" %}
+{% block content %}
+
+{% load staticfiles %}
+<h2> Home </h2>
+
+
+
+<style>
+
+/*nadaaa*/
+
+/*recien agregado*/
+#container
+{
+    height:2000px;    
+}
+
+#container DIV
+{ 
+    margin:50px; 
+    padding:50px; 
+    background-color:lightgreen; 
+}
+
+.hideme
+{
+    opacity:0;
+}
+.btn-group button {
+    background-color: #61380B; /* Green background */
+    /*border: 1px solid green; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+}
+
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: #DB8A4C;
+}
+
+
+</style>
+
+<body>
+
+<center>
+<img src="{% static 'app/img/puredogss.png' %}"  alt="" class="img-responsive" style= "height:300px; width:300px">
+</center>
+
+
+
+
+<br>
+<center>
+ <div class="btn-group">
+  
+  <a href="/Chihuahua/"><button>Chihuahua</button></a>
+  <a href="/Husky/"><button>Husky</button></a>
+  <a href="/Labrador/"><button>Labrador</button></a>
+  <a href="/Otras razas/"><button>Otras razas</button></a>
+  <a href="/Pastor alemán/"><button>Pastor alemán</button></a>
+  <a href="/Pitbull/"><button>Pitbull</button></a>
+  <a href="/Poodle/"><button>Poodle</button></a>
+
+  </div>
+</center>
+<br>
+<center>
+ <div class="btn-group">
+  
+  <a href="/encontrado/"><button>Encontrados</button></a>
+  <a href="/buscando/"><button>Buscando</button></a>
+  <a href="/enadopcion/"><button>En adopcion</button></a>
+  <a href="/adoptado/"><button>Adoptados</button></a>
+  </div>
+</center>
+
+<br><br>
+
+<form method='GET' action='' >
+<i class="glyphicon glyphicon-search"></i><input type ='text' name='q' placeholder='Buscar'/>
+<input type='submit' value='Search'/>
+</form>
+
+
+<br><br><br><br><br><br>
+
+<center>
+{% if messages %}
+<ul class = "messages">
+  {% for message in messages %}
+  <li{% if messafe.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+
+{% for obj in object_list %}
+{% if obj.Foto %}
+       <!-- <div class="row" style="float:left; background-color:#FFFFFF" >
+          <div class="col-xs-11" >
+            <div class="thumbnail col-xs-12;" >
+              <img src="{{ obj.Foto.url }}" alt="" class="img-responsive" style= "height:300px; width:300px">
+              <div class="caption; background-color:#FFAF0A"></div>
+              <h3 style="text-align: left">Nombre: {{ obj.Nombre | title }}</h3>
+              <h6 style="text-align: left">Edad: {{ obj.Edad | title }}</h6>
+	 	<h6 style="text-align: left">Raza: {{ obj.Raza | title }}</h6>
+              <p style="text-align: left">Descripción: {{ obj.Descripcion | capfirst }}</p>
+              <p style="text-align: left;font-size: 12px;padding-left: 5pt">Fecha de publicación: {{ obj.marcadetiempo }}
+                <p style="text-align: left;font-size: 12px;padding-left: 5pt">Autor: {{ obj.Autor }}
+              </p>
+              <a href='http://localhost:8000/post_detail/{{obj.id}}'>Comentar!</a>
+
+              <p ></p>
+            </div>
+          </div>
+        </div>-->
+
+
+                              <div class="panel panel-default" style= "height:700px;">
+                                <div class="panel-heading"><h4>Nombre: {{ obj.Nombre | title }}</h4></div>
+                               	<div class="panel-body">
+
+              <img src="{{ obj.Foto.url }}" alt="" class="img-responsive" style= "height:300px; width:300px">
+              <h6 style="text-align: left">Edad: {{ obj.Edad | title }}</h6>
+	 	<h6 style="text-align: left">Raza: {{ obj.Raza | title }}</h6>
+              <p style="text-align: left">Descripción: {{ obj.Descripcion | capfirst }}</p>
+              <p style="text-align: left;font-size: 12px;padding-left: 5pt">Fecha de publicación: {{ obj.marcadetiempo }}
+                <p style="text-align: left;font-size: 12px;padding-left: 5pt">Autor: {{ obj.Autor }}
+              </p>
+		<a href='http://localhost:8000/post_detail/{{obj.id}}'><button type="button" class="btn btn-info">Comentar</button></a></p>
+                        </div>
+                              </div>
+    {% else %}
+        <!--<div class="row" style="float:left">
+          <div class="col-xs-7">
+            <div class="thumbnail col-xs-7"><br>
+
+              <a><h3 style="text-align: left">{{ obj.Nombre | title }}</h3></a>
+              <h6 style="text-align: left">{{ obj.Edad | title }}</h6>
+              <p style="text-align: left">{{ obj.Descripcion | capfirst }}</p><br>
+              <p style="text-align: left;font-size: 12px;padding-left: 5pt">{{ obj.marcadetiempo }}
+              </p>
+
+              <div class="caption" ></div>
+            </div>
+          </div>
+        </div>-->
+
+
+                              <div class="panel panel-default" style= "height:700px;">
+                                <div class="panel-heading"><h4>Nombre: {{ obj.Nombre | title }}</h4></div>
+                               	<div class="panel-body">
+              <img src="{% static 'app/img/sinimagen.jpg' %}" alt="" class="img-responsive" style= "height:300px; width:300px">
+              <h6 style="text-align: left">Edad: {{ obj.Edad | title }}</h6>
+	 	<h6 style="text-align: left">Raza: {{ obj.Raza | title }}</h6>
+              <p style="text-align: left">Descripción: {{ obj.Descripcion | capfirst }}</p>
+              <p style="text-align: left;font-size: 12px;padding-left: 5pt">Fecha de publicación: {{ obj.marcadetiempo }}
+                <p style="text-align: left;font-size: 12px;padding-left: 5pt">Autor: {{ obj.Autor }}
+              </p>
+		<a href='http://localhost:8000/post_detail/{{obj.id}}'><button type="button" class="btn btn-info">Comentar</button></a>
+                        </div>
+                              </div>
+    {% endif %}
+{% endfor %}
+
+
+
+
+
+ 
+
+</body>
+
+  <footer>
+<br>
+<div class="pagination" style = "float:center">
+    <span class="step-links">
+        {% if object_list.has_previous %}
+            <a href="?page={{ object_list.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}
+        </span>
+
+        {% if object_list.has_next %}
+            <a href="?page={{ object_list.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+</footer>
+</center>
+<script>
+$(document).ready(function() {
+    
+    /* Every time the window is scrolled ... */
+    $(window).scroll( function(){
+    
+        /* Check the location of each desired element */
+        $('.hideme').each( function(i){
+            
+            var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+            var bottom_of_window = $(window).scrollTop() + $(window).height();
+            
+            /* If the object is completely visible in the window, fade it it */
+            if( bottom_of_window > bottom_of_object ){
+                
+                $(this).animate({'opacity':'1'},500);
+                    
+            }
+            
+        }); 
+    
+    });
+    
+});
+</script>
+
+{% endblock %}
+
+<!--{% url "detalle" abc=obj.id
+<a href='{{ obj.get_absolut_url }}'>{{ obj.Nombre }}</a> <br>
+{{ obj.contenido }} <br>
+{{ obj.update }} <br>
+{{ obj.id }} <br>
+<img src='{{ obj.Foto.url }}' class='img-responive' height="480" width="480"/>
+<hr>
+aca va un endfor pero no se puede comentar idk y-->

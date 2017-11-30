@@ -1,0 +1,52 @@
+{% extends "app/base.html" %}
+{% block title %}Indice{% endblock %}
+
+{% block page_title %}
+{%load staticfiles %}
+  <div class="container-fluid">
+    <h4 class="h4" style="text-align: center;">Perrera.</h4>
+  </div>
+
+  <div class="container-fluid">
+    <label><br></label>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+<body class="body" style="background-color:#f6f6f6">
+<div class="row" style="text-align: center" >
+<br>
+<h2>Inicio de sesión</h2>
+<br><br>
+<a href="/accounts/facebook/login/?process=login">¡facebook!</a></h3>
+
+
+	{% if user.is_authenticated %}
+		<h2>¡Bienvenido {{ user.username | capfirst }}!</h2><br>
+		<a href="/logout" class="btn btn-default">Cerrar sesion</a>
+	{% else %}
+	 	 <form method="post">
+    		{% csrf_token %}
+    		{{ form.as_p }}
+    		<button type="submit">Login</button>
+		</form>
+	<h3>¿No tienes cuenta?
+	<a href="/registrate/">¡Regístrate!</a></h3>
+
+	{% if form.errors %}
+		<div class="alert alert-danger col-xs-8 col-xs-push-2" role="alert">
+		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+		<span class="sr-only">Error:</span>
+		&nbsp;Nombre de usuario o contraseña incorrecta
+		</div>
+	<!--<h3>¿No tienes cuenta?
+<a href="/registrate/">¡Regístrate!</a></h3>-->
+	{% endif %}
+{% endif %}
+
+
+
+</body>
+
+{% endblock %}

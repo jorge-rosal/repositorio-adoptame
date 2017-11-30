@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Perrera</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+{% load static %}
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>{% block title %}{%endblock%}</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="{% static 'app/css/bootstrap.min.css'%}" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="{% static 'app/css/styles.css'%}" rel="stylesheet">
+
+{% load staticfiles %}
+
+
+  <style>
+
+body,html{
+    height: 100%;
+  }
+
+#main {
+   background-image:url('{% static "app/img/bg.png" %}');
+   background-color:#e9eaed;
+   padding-left:0;
+   padding-right:0;
+}
+
+  nav.sidebar, .main{
+    -webkit-transition: margin 200ms ease-out;
+      -moz-transition: margin 200ms ease-out;
+      -o-transition: margin 200ms ease-out;
+      transition: margin 200ms ease-out;
+      background-color: #F0E68C;
+  }
+
+  .main{
+    padding: 10px 10px 0 10px;
+  }
+
+ @media (min-width: 765px) {
+
+    .main{
+      position: absolute;
+      width: calc(100% - 40px);
+      margin-left: 100px;
+      float: center;
+    }
+
+    nav.sidebar:hover + .main{
+      margin-left: 300px;
+    }
+
+    nav.sidebar.navbar.sidebar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+      margin-left: 0px;
+    }
+
+    nav.sidebar .navbar-brand, nav.sidebar .navbar-header{
+      text-align: center;
+      width: 100%;
+      margin-left: 0px;
+    }
+
+    nav.sidebar a{
+      padding-right: 13px;
+    }
+
+    nav.sidebar .navbar-nav > li:first-child{
+      border-top: 1px #e5e5e5 solid;
+    }
+
+    nav.sidebar .navbar-nav > li{
+      border-bottom: 1px #e5e5e5 solid;
+    }
+
+    nav.sidebar .navbar-nav .open .dropdown-menu {
+      position: static;
+      float: none;
+      width: auto;
+      margin-top: 0;
+      background-color: green;
+      border: 0;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+
+    nav.sidebar .navbar-collapse, nav.sidebar .container-fluid{
+      padding: 0 0px 0 0px;
+      background-color: green;
+    }
+
+    .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+      color: #777;
+      background-color: green;
+    }
+
+    nav.sidebar{
+      width: 150px;
+      height: 100%;
+      margin-left: -160px;
+      float: left;
+      margin-bottom: 0px;
+    }
+
+    nav.sidebar li {
+      width: 100%;
+    }
+
+    nav.sidebar:hover{
+      margin-left: 0px;
+    }
+
+    .forAnimate{
+      opacity: 0;
+    }
+  }
+
+  @media (min-width: 1330px) {
+
+    .main{
+      width: calc(100% - 200px);
+      margin-left: 100px;
+    }
+
+    nav.sidebar{
+      margin-left: 0px;
+      float: left;
+    }
+
+    nav.sidebar .forAnimate{
+      opacity: 1;
+    }
+  }
+
+  nav.sidebar .navbar-nav .open .dropdown-menu>li>a:hover, nav.sidebar .navbar-nav .open .dropdown-menu>li>a:focus {
+    color: #FFFFFF;
+    background-color: #000000;
+  }
+
+  nav:hover .forAnimate{
+    opacity: 1;
+  }
+  section{
+    padding-left: 15px;
+  }
+
+
+/*acaba sidebar*/
+  body {
+      /*background: url('{% static "image/bg.png" %}') repeat center center fixed; */
+      font: 400 15px Helvetica, sans-serif;
+      line-height: 1.8;
+      color: #818181;
+
+
+  }
+  h2 {
+      font-size: 24px;
+      text-transform: uppercase;
+      color: #303030;
+      font-weight: 600;
+      margin-bottom: 30px;
+  }
+  h4 {
+      font-size: 19px;
+      line-height: 1.375em;
+      color: #303030;
+      font-weight: 400;
+      margin-bottom: 30px;
+  }
+  .jumbotron {
+      background-color: #f4511e;
+      color: #fff;
+      padding: 100px 30px;
+      font-family: Montserrat, sans-serif;
+  }
+  .container-fluid {
+      padding: 60px 50px;
+  }
+  .bg-grey {
+      background-color: #f6f6f6;
+  }
+
+  .tdStyle
+  {
+      background-image:url("{% static 'app/img/bg.png'%}");
+      background-repeat:repeat;
+      background-size:100%;
+  }
+  .logo-small {
+      color: #f4511e;
+      font-size: 50px;
+  }
+  .logo {
+      color: #f4511e;
+      font-size: 200px;
+  }
+  .thumbnail {
+      padding: 0 0 15px 0;
+      border: none;
+      border-radius: 0;
+  }
+  .thumbnail img {
+      width: 100%;
+      height: 100%;
+      margin-bottom: 10px;
+  }
+  .carousel-control.right, .carousel-control.left {
+      background-image: none;
+      color: #f4511e;
+  }
+  .carousel-indicators li {
+      border-color: #f4511e;
+  }
+  .carousel-indicators li.active {
+      background-color: #f4511e;
+  }
+  .item h4 {
+      font-size: 19px;
+      line-height: 1.375em;
+      font-weight: 400;
+      font-style: italic;
+      margin: 70px 0;
+  }
+  .item span {
+      font-style: normal;
+  }
+  .panel {
+      border: 1px solid #98AFC7;
+      border-radius:0 !important;
+      transition: box-shadow 0.5s;
+      width: 500px;
+  }
+  .panel:hover {
+      box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+  }
+  .panel-footer .btn:hover {
+      border: 1px solid #f4511e;
+      background-color: #fff !important;
+      color: #f4511e;
+  }
+  .panel-heading {
+      color: #566D7E !important;
+      background-color: transparent;
+      padding: 5px;
+      border-bottom: 1px solid transparent;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+      font-size: 22px;
+  }
+  .panel-footer {
+      background-color: white !important;
+  }
+  .panel-footer h3 {
+      font-size: 32px;
+  }
+  .panel-footer h4 {
+      color: #aaa;
+      font-size: 14px;
+  }
+  .panel-footer .btn {
+      margin: 15px 0;
+      background-color: #f4511e;
+      color: #fff;
+  }
+  .navbar {
+      margin-bottom: 0;
+      background-color: #CD853F;
+      background-image:url({% static "app/img/paws1.png" %});
+      z-index: 9999;
+      border: 0;
+      font-size: 12px !important;
+      line-height: 1.42857143 !important;
+      letter-spacing: 4px;
+      border-radius: 0;
+      font-family: Montserrat, sans-serif;
+  }
+  .navbar li a, .navbar .navbar-brand {
+      color: #fff !important;
+  }
+/* Esto ya es pintar el menu, solo las letras  */
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: #000000 !important;
+      background-color: #F0E68C !important;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: #000000;
+      color: #fff !important;
+  }
+  footer .glyphicon {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #f4511e;
+  }
+  .slideanim {visibility:hidden;}
+  .slide {
+      animation-name: slide;
+      -webkit-animation-name: slide;
+      animation-duration: 1s;
+      -webkit-animation-duration: 1s;
+      visibility: visible;
+  }
+  @keyframes slide {
+    0% {
+      opacity: 0;
+      transform: translateY(70%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+  @-webkit-keyframes slide {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(70%);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0%);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+    .btn-lg {
+        width: 100%;
+        margin-bottom: 35px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .logo {
+        font-size: 150px;
+    }
+  }
+
+
+  </style>
+</head>
+
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<div class="wrapper">
+    <div class="box">
+        <div class="row row-offcanvas row-offcanvas-left">
+                      
+          
+            <!-- sidebar -->
+            <div class="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
+              
+              	<ul class="nav">
+          			<li><a href="#" data-toggle="offcanvas" class="visible-xs text-center"><i class="glyphicon glyphicon-chevron-right"></i></a></li>
+            	</ul>
+               
+                <ul class="nav hidden-xs" id="lg-menu">
+                    <li class="active"><a href="#featured"><i class="glyphicon glyphicon-search"></i>Buscando</a></li>
+                    <li><a href="#stories"><i class="glyphicon glyphicon-list"></i> En adopcion</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-list"></i> Adoptados</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-list"></i> Encontrados</a></li>
+                    <li><a href="/post_create" role="button" data-toggle="modal"><i class="glyphicon glyphicon-plus"></i> crear post</a></li>
+                </ul>
+                <ul class="list-unstyled hidden-xs" id="sidebar-footer">
+                    <li>
+                      <i class="glyphicon glyphicon-heart-empty"></i>Perrera</a>
+                    </li>
+                </ul>
+              
+              	<!-- tiny only nav-->
+              <ul class="nav visible-xs" id="xs-menu">
+                  	<li><a href="#featured" class="text-center"><i class="glyphicon glyphicon-list-alt"></i></a></li>
+                    <li><a href="#stories" class="text-center"><i class="glyphicon glyphicon-list"></i></a></li>
+                  	<li><a href="#" class="text-center"><i class="glyphicon glyphicon-paperclip"></i></a></li>
+                    <li><a href="#" class="text-center"><i class="glyphicon glyphicon-refresh"></i></a></li>
+                </ul>
+              
+            </div>
+            <!-- /sidebar -->
+          
+            <!-- main right col -->
+            <div class="column col-sm-10 col-xs-11" id="main">
+                
+                <!-- top nav -->
+			        {% if user.is_authenticated %}
+              	<div class="navbar navbar-blue navbar-static-top">  
+                    <div class="navbar-header">
+                      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle</span>
+                        <span class="icon-bar"></span>
+          				<span class="icon-bar"></span>
+          				<span class="icon-bar"></span>
+                      </button>
+                      <a href="/" ><img src="{% static 'app/img/paw.png' %}" class="navbar-brand logo" style='max-height:40px;'></a>
+                  	</div>
+                  	<nav class="collapse navbar-collapse" role="navigation">
+                    <form class="navbar-form navbar-left">
+                        <div class="input-group input-group-sm" style="max-width:360px;">
+                          <!--<input type="text" class="form-control" placeholder="Buscar" name="srch-term" id="srch-term">
+                          <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                          </div>-->
+                        </div>
+                    </form>
+                    <ul class="nav navbar-nav">
+                      <li>
+                        <a href="/home"><i class="glyphicon glyphicon-home"></i> Home</a>
+                      </li>
+                      <li>
+                        <a href="/post_create"><i class="glyphicon glyphicon-plus"></i> Post</a>
+                      </li>	
+                      <!--<li>
+                        <a href=""><span class="badge">badge</span></a>
+                      </li>-->
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                      <li class="dropdown">
+                        <a href="/perfil" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i>Usuario: {{ user.username | capfirst}}</a>
+                        <ul class="dropdown-menu">
+                          <li><a href="/perfil">Mis posts</a></li>
+                          <li><a href="/logout">Cerrar sesion</a></li>
+                          <li><a href="">Mas</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  	</nav>
+                </div>
+
+	{% else %}
+
+              	<div class="navbar navbar-blue navbar-static-top">  
+                    <div class="navbar-header">
+                      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle</span>
+                        <span class="icon-bar"></span>
+          				<span class="icon-bar"></span>
+          				<span class="icon-bar"></span>
+                      </button>
+                      <a href="/" ><img src="{% static 'app/img/paw.png' %}" class="navbar-brand logo" style='max-height:40px;'></a>
+                  	</div>
+                  	<nav class="collapse navbar-collapse" role="navigation">
+                    <form class="navbar-form navbar-left">
+                        <div class="input-group input-group-sm" style="max-width:360px;">
+                          <!--<input type="text" class="form-control" placeholder="Buscar" name="srch-term" id="srch-term">
+                          <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                          </div>-->
+                        </div>
+                    </form>
+                    <ul class="nav navbar-nav">
+                      <li>
+                        <a href="/home"><i class="glyphicon glyphicon-home"></i> Home</a>
+                      </li>
+                      <li>
+                        <a href="/login"></i> Login</a>
+                      </li>
+                      <li>
+			<a href="/registrate">Registrate</a>
+		      </li>	
+                      <!--<li>
+                        <a href=""><span class="badge">badge</span></a>
+                      </li>-->
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                      <li>
+                        <a href="/login"></i> Login</a>
+                      </li>
+                    </ul>
+                  	</nav>
+                </div>
+	{% endif %}
+                <!-- /top nav -->
+              
+                <div class="padding">
+                    <div class="full col-sm-9">
+                      
+                        <!-- content -->                      
+                      	<div class="row">
+                          {% block content %}
+			  {% endblock %}
+                        
+                       </div><!--/row-->
+                      
+                      <!--  <div class="row">
+                          <div class="col-sm-6">
+                            <a href="#">Twitter</a> <small class="text-muted">|</small> <a href="#">Facebook</a> <small class="text-muted">|</small> <a href="#">Google+</a>
+                          </div>
+                        </div>-->
+                      
+
+                      
+                        
+                      <hr>
+			<footer class="container-fluid text-center">
+ 			 <a href="#myPage" title="To Top">
+  			  <span class="glyphicon glyphicon-chevron-up"></span>
+  			</a>
+		       <hr>
+
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+  
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+
+</script>
+			</footer>
+                      </hr>  
+                      
+                    </div><!-- /col-9 -->
+                </div><!-- /padding -->
+            </div>
+            <!-- /main -->
+          
+        </div>
+    </div>
+</div>
+
+
+<!--post modal-->
+<div id="postModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			Crear Post
+      </div>
+      <div class="modal-body">
+          <form class="form center-block">
+            <div class="form-group">
+              <textarea class="form-control input-lg" autofocus="" placeholder="Escribe aquí lo que deseas compartir"></textarea>
+            </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+          <div>
+          <button class="btn btn-primary btn-sm" data-dismiss="modal" aria-hidden="true">Post</button>
+            <ul class="pull-left list-inline"><li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li><li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li><li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li></ul>
+		  </div>	
+      </div>
+  </div>
+  </div>
+</div>
+
+
+
+
+
+</body>
+</html>
